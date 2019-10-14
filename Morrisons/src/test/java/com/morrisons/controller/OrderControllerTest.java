@@ -53,14 +53,16 @@ public class OrderControllerTest {
 //	}
 
 	@Test
-    public void shouldFindOrder() throws Exception {
+    public void shouldReturnOrderFromRepository() throws Exception {
 		 Order o = new Order("ORD00001", "ABCD", "EDI238473828384", "MORR", null, "GLN999999", "Test Store", "1 Order Street", "", "Leeds", "West Yorkshire", "LS1 9PP", "UK", null, null, null);
 		 Optional<Order> order = Optional.of(o);
 		 when(orderRepository.findById("ORD00001")).thenReturn(order);
 		 
 		 this.mockMvc.perform(get("/ORD00001")
 			 	.accept("application/json"))
-		 		.andExpect(status().isOk());
+		 		.andExpect(status().isOk())
+		 	   .andExpect(jsonPath("orderId").exists())
+		 	   .andExpect(jsonPath("orderReferenceCode").value("ABCD"));
 		 
 	}
 }

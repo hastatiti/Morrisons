@@ -36,11 +36,11 @@ public class OrderController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<?> addOrder(@RequestBody Order order){
-//		try {
+		try {
 			rep.save(order);
-//		}catch(Exception e) {
-//			return ResponseEntity.status(500).body(null);
-//		}
+		}catch(Exception e) {
+			return ResponseEntity.status(500).body(null);
+		}
 		return ResponseEntity.ok(order);
 	}
 	
