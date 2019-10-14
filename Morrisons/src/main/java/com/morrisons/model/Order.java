@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="order")
 public class Order {
@@ -51,7 +53,7 @@ public class Order {
 	@OneToMany(targetEntity = Items.class,
 	fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "orderId")
-	@NotNull
+//	@NotNull
 	private Set<Items> items;
 	
 	public Order() {

@@ -21,13 +21,13 @@ public class Items {
 	@NotNull
 	private String quantityType;
 	@NotNull
-	private String quantityOrdered;
+	private int quantityOrdered;
 	@NotNull
 	private String priceOrderedCurrency;
 	@NotNull
-	private String priceOrderedAmount;
+	private int priceOrderedAmount;
 	@NotNull
-	private String priceOrderedTaxRate;
+	private int priceOrderedTaxRate;
 	
 	@ManyToOne
 	@JoinColumn(name="orderId",referencedColumnName = "orderId")
@@ -39,6 +39,31 @@ public class Items {
 	public Items() {
 		
 	}
+	
+	public int getQuantityOrdered() {
+		return quantityOrdered;
+	}
+
+	public void setQuantityOrdered(int quantityOrdered) {
+		this.quantityOrdered = quantityOrdered;
+	}
+
+	public int getPriceOrderedAmount() {
+		return priceOrderedAmount;
+	}
+
+	public void setPriceOrderedAmount(int priceOrderedAmount) {
+		this.priceOrderedAmount = priceOrderedAmount;
+	}
+
+	public int getPriceOrderedTaxRate() {
+		return priceOrderedTaxRate;
+	}
+
+	public void setPriceOrderedTaxRate(int priceOrderedTaxRate) {
+		this.priceOrderedTaxRate = priceOrderedTaxRate;
+	}
+
 	public ItemAlternateId getItemAlternateId() {
 		return itemAlternateId;
 	}
@@ -67,36 +92,12 @@ public class Items {
 		this.quantityType = quantityType;
 	}
 
-	public String getQuantityOrdered() {
-		return quantityOrdered;
-	}
-
-	public void setQuantityOrdered(String quantityOrdered) {
-		this.quantityOrdered = quantityOrdered;
-	}
-
 	public String getPriceOrderedCurrency() {
 		return priceOrderedCurrency;
 	}
 
 	public void setPriceOrderedCurrency(String priceOrderedCurrency) {
 		this.priceOrderedCurrency = priceOrderedCurrency;
-	}
-
-	public String getPriceOrderedAmount() {
-		return priceOrderedAmount;
-	}
-
-	public void setPriceOrderedAmount(String priceOrderedAmount) {
-		this.priceOrderedAmount = priceOrderedAmount;
-	}
-
-	public String getPriceOrderedTaxRate() {
-		return priceOrderedTaxRate;
-	}
-
-	public void setPriceOrderedTaxRate(String priceOrderedTaxRate) {
-		this.priceOrderedTaxRate = priceOrderedTaxRate;
 	}
 
 	public void setItemLineId(int itemLineId) {
@@ -126,12 +127,13 @@ public class Items {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+	
 	@Override
 	public String toString() {
 		return "Items [itemId=" + itemId + ", itemLineId=" + itemLineId + ", itemBaseType=" + itemBaseType
 				+ ", itemDescription=" + itemDescription + ", quantityType=" + quantityType + ", quantityOrdered="
 				+ quantityOrdered + ", priceOrderedCurrency=" + priceOrderedCurrency + ", priceOrderedAmount="
-				+ priceOrderedAmount + ", priceOrderedTaxRate=" + priceOrderedTaxRate + ", itemAlternateId="
-				+ itemAlternateId + ", order=" + order + "]";
+				+ priceOrderedAmount + ", priceOrderedTaxRate=" + priceOrderedTaxRate + ", order=" + order
+				+ ", itemAlternateId=" + itemAlternateId + "]";
 	}
 }
