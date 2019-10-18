@@ -38,6 +38,7 @@ import com.morrisons.model.Order;
 import com.morrisons.repositories.OrderRepository;
 
 
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(OrderController.class)
 public class OrderControllerTest {
@@ -63,6 +64,15 @@ public class OrderControllerTest {
 		 		.andExpect(status().isOk())
 		 	   .andExpect(jsonPath("orderId").exists())
 		 	   .andExpect(jsonPath("orderReferenceCode").value("ABCD"));
-		 
 	}
+//	@Test
+//    public void shouldAddOrder() throws Exception{
+//		 Order o = new Order("ORD00001", "ABCD", "EDI238473828384", "MORR", null, "GLN999999", "Test Store", "1 Order Street", "", "Leeds", "West Yorkshire", "LS1 9PP", "UK", null, null, null);
+//		 Optional<Order> order = Optional.of(o);
+//		 when(orderRepository.save(order).thenReturn(order));
+//		
+//		 this.mockMvc.perform(post("/add")
+//				 	.accept("application/json"))
+//			 		.andExpect(status().isOk());
+//	}
 }
